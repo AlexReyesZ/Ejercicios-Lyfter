@@ -7,7 +7,18 @@ def get_section():
 
 
 def get_score(subject):
-    return float(input(f'{subject} score (0-100): '))
+
+    while True:
+        try:
+            score= float(input(f'{subject} score (0-100): '))
+
+            if score < 0 or score > 100:
+                print('Error: score must be between 0 and 100')
+                continue
+            return score
+        except ValueError:
+            print('Error: Please enter a valid number')
+    
 
 
 def create_student(name, section, spanish, english, socials, science):
