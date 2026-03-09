@@ -16,7 +16,7 @@ class Rectangle:
 
     def get_perimeter(self):
 
-        return 2 *(self.width * self.height)
+        return 2 *(self.width + self.height)
     
 
 try:
