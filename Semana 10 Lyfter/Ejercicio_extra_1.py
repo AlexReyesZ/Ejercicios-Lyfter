@@ -26,8 +26,6 @@ try:
     rectangle=Rectangle(user_width, user_hight)
 
     print(f'Area: {rectangle.get_area()}')
-    print(f'Perimeter: {rectangle.get_perimeter()}')
-
-
+    print(f'Perimeter: {rectangle.get_perimeter()}') 
 except ValueError as e:
     print(e)
