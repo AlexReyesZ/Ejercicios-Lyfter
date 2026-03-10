@@ -44,3 +44,6 @@ my_inventory.add_product(product2)
 #4. we show the total value
 total_value = my_inventory.calculate_total_value()
 print(f"Valor total del inventario: {total_value}")
+
+
+#Homework done 
