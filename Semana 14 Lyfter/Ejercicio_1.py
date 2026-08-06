@@ -24,7 +24,7 @@ def bubble_sort_reverse(data_list):
     return data_list
 
 
-# TEST /
+# TEST
 print("EJERCICIO 1: Bubble Sort Estandar")
 numbers1 = [64, 34, 25, 12, 22, 11, 90]
 print("Lista original:", numbers1)
