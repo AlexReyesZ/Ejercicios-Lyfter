@@ -34,3 +34,5 @@ print("EJERCICIO 2: Bubble Sort Invertido (Imagen)")
 numbers2 = [9, 8, 7, 1, 6, 5, 4, 3, 2]
 print("Lista original:", numbers2)
 print("Resultado:     ", bubble_sort_reverse(numbers2))
+
+# Cambio para actualizar PR
