@@ -1,3 +1,24 @@
+#Complexity: O(n*m*p) (Cubic)
+# Explanation: Contains three nested for loops. The outer loop iterates through list_a of size N, the middle loop iterates through list_b of size M, and the inner loop iterates through list_c of size P. 
+# The total number of iterations is proportional to N * M * P. 
+
+
+# -------------------------------------------------------------------
+# Algorithm: Bubble Sort
+# -------------------------------------------------------------------
+# Complexity: O(n²) (Quadratic Time)
+# 
+# Explanation:
+# Bubble sort uses nested loops to compare adjacent elements in an array/list
+# of size N and swap them if they are in the wrong order.
+# In the worst and average cases, the outer loop runs N times, and the inner
+# loop runs up to N times for each iteration of the outer loop.
+# This results in approximately N * N / 2 comparisons and swaps, which simplifies
+# to O(n²) polynomial/quadratic complexity.
+# -------------------------------------------------------------------
+
+
+
 #print_numbers_times_2
 
 def print_numbers_times_2(numbers_list):
@@ -49,6 +70,3 @@ def generate_list_trios(list_a, list_b, list_c):
 				
 	return result_list 
 
-#Complexity: O(n*m*p) (Cubic)
-# Explanation: Contains three nested for loops. The outer loop iterates through list_a of size N, the middle loop iterates through list_b of size M, and the inner loop iterates through list_c of size P. 
-# The total number of iterations is proportional to N * M * P. 
