@@ -47,3 +47,5 @@ print(validated_bubble_sort(invalid_list))
 print("\n--- PRUEBA 3: Lista Vacia ---")
 empty_list = []
 print(validated_bubble_sort(empty_list))
+
+# Entrega Semana 14
