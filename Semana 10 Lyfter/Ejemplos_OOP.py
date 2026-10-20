@@ -78,6 +78,7 @@ my_car_6.improve_engine()
 print('Car improved')
 print(my_car_6.gas_type)
 my_car_6.improve_engine()
+print('-'*20)
 
 #----------------------------------------------------------------
 

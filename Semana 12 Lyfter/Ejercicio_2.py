@@ -23,3 +23,5 @@ try:
     print(multiply(10, "2", 5)) # Note the string "2"
 except ValueError as e:
     print(f"Caught an error: {e}")
+
+#week 12
