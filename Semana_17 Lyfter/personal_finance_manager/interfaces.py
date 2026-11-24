@@ -129,11 +129,11 @@ class FinanceGUI:
 
     def _refresh_main_window(self, window):
      """Updates table rows, colors, and totals on the main window."""
-    window["-START_DATE-"].update("")
-    window["-END_DATE-"].update("")
-    rows, colors = self._get_table_data()
-    window["-TABLE-"].update(values=rows, row_colors=colors)
-    window["-TOTALS-"].update(self._get_totals_string())
+     window["-START_DATE-"].update("")
+     window["-END_DATE-"].update("")
+     rows, colors = self._get_table_data()
+     window["-TABLE-"].update(values=rows, row_colors=colors)
+     window["-TOTALS-"].update(self._get_totals_string())
     DataPersistence.save_data(self.manager)
 
     def _open_category_window(self, main_window):
