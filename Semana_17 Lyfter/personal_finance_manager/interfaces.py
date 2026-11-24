@@ -134,7 +134,7 @@ class FinanceGUI:
      rows, colors = self._get_table_data()
      window["-TABLE-"].update(values=rows, row_colors=colors)
      window["-TOTALS-"].update(self._get_totals_string())
-    DataPersistence.save_data(self.manager)
+     DataPersistence.save_data(self.manager)
 
     def _open_category_window(self, main_window):
         """Opens a secondary window to add a new category with color selection."""
