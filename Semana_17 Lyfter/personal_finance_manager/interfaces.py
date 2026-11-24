@@ -20,7 +20,7 @@ class FinanceGUI:
 
         for idx, m in enumerate(target_movements):
             table_rows.append([m.date, m.title, f"₡{m.amount}", m.category, m.movement_type])
-            
+
             # Get category color or default to white/light grey
             cat_color = self.manager.categories.get(m.category, "#FFFFFF")
             # row_colors format: (index, text_color, background_color)
@@ -31,7 +31,10 @@ class FinanceGUI:
     def run(self):
         """Launches the main application window and event loop."""
         # Initial data load
-        DataPersistence.load_data(self.manager)
+        try:  
+            DataPersistence.load_data(self.manager)  
+        except ValueError as e:  
+            sg.popup_error(f"Could not load saved data: {e}", title="Load Error")  # <<<< AQUÍ
 
         initial_rows, initial_colors = self._get_table_data()
 
@@ -75,7 +78,12 @@ class FinanceGUI:
         while True:
             event, values = window.read()
 
+            # [CAMBIO 1] Guardar datos al cerrar con la X o presionar "Exit"
             if event == sg.WIN_CLOSED or event == "Exit":
+                try:
+                    DataPersistence.save_data(self.manager)
+                except Exception as e:
+                    sg.popup_error(f"Error saving data on exit: {e}", title="Error")
                 break
 
             elif event == "Add Category":
@@ -120,11 +128,13 @@ class FinanceGUI:
         return f"Incomes: ₡{totals['income']} | Expenses: ₡{totals['expense']} | Net Balance: ₡{totals['balance']}"
 
     def _refresh_main_window(self, window):
-        """Updates table rows, colors, and totals on the main window."""
-        rows, colors = self._get_table_data()
-        window["-TABLE-"].update(values=rows, row_colors=colors)
-        window["-TOTALS-"].update(self._get_totals_string())
-        DataPersistence.save_data(self.manager)
+     """Updates table rows, colors, and totals on the main window."""
+    window["-START_DATE-"].update("")
+    window["-END_DATE-"].update("")
+    rows, colors = self._get_table_data()
+    window["-TABLE-"].update(values=rows, row_colors=colors)
+    window["-TOTALS-"].update(self._get_totals_string())
+    DataPersistence.save_data(self.manager)
 
     def _open_category_window(self, main_window):
         """Opens a secondary window to add a new category with color selection."""
@@ -145,6 +155,8 @@ class FinanceGUI:
                     name = values["-CAT_NAME-"]
                     color = values["-COLOR_HEX-"]
                     self.manager.add_category(name, color)
+                    # [CAMBIO 2] Guardar datos inmediatamente al crear una categoría
+                    DataPersistence.save_data(self.manager)
                     sg.popup("Category added successfully!", title="Success")
                     cat_window.close()
                     break
@@ -185,7 +197,7 @@ class FinanceGUI:
 
                     if not raw_amount.replace('.', '', 1).isdigit():
                         raise ValueError("Amount must be a valid number.")
-                    
+
                     amount = float(raw_amount)
 
                     # Validate date using logic module
@@ -193,7 +205,7 @@ class FinanceGUI:
 
                     self.manager.add_movement(title, amount, category, movement_type, date_str)
                     self._refresh_main_window(main_window)
-                    
+
                     sg.popup(f"New {movement_type.lower()} added successfully!", title="Success")
                     mov_window.close()
                     break
