@@ -1,0 +1,14 @@
+{
+    "categories": {
+        "Food": "#80ffff"
+    },
+    "movements": [
+        {
+            "title": "Salary",
+            "amount": 2000.0,
+            "category": "Food",
+            "movement_type": "Income",
+            "date": "09/11/2026"
+        }
+    ]
+}
